@@ -1,0 +1,44 @@
+@import '../helpers/style/layout.scss';
+
+header {
+  @include centerH;
+  justify-content: space-between;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border-bottom: solid 1px white;
+
+  h1 {
+    font-size: 4rem;
+    text-transform: uppercase;
+  }
+
+  nav {
+    @include centerH;
+
+    a > .nav-icon {
+      background-color: rgba(0, 0, 0, 0);
+      border: none;
+      outline: none;
+
+      :hover {
+        filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.6));
+      }
+
+      img {
+        height: 4rem;
+      }
+    }
+
+    .prev {
+      img {
+        transform: rotate(225deg);
+      }
+    }
+
+    .next {
+      img {
+        transform: rotate(45deg);
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import './helpers/style/layout.scss';
+
+* {
+  margin: 0;
+  font-size: 10px;
+}
+
+body {
+  background: url('./assets/background.jpg');
+  background-size: cover;
+  background-position: 0% 70%;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  @include centerV;
+  padding: 2rem;
+
+  p, a {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+}

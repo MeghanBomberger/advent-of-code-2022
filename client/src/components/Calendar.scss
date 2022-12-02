@@ -1,0 +1,16 @@
+.calendar {
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  a {
+    margin: 5rem 3rem;
+    padding: 3rem;
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    background-color: red;
+    font-size: 3rem;
+    line-height: 3rem;
+    text-align: center;
+  }
+}
