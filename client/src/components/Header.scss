@@ -5,7 +5,8 @@ header {
   justify-content: space-between;
   padding: 2rem;
   margin-bottom: 3rem;
-  border-bottom: solid 1px white;
+  filter: drop-shadow(0 0 1rem black);
+  background-color: rgba(0, 0, 0, 0.5);
 
   h1 {
     font-size: 4rem;

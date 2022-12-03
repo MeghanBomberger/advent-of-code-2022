@@ -1,14 +1,15 @@
 import {
-  dayOneData,
+  dayOneData, 
+  dayThreeData, 
+  dayTwoData,
 } from '../data'
-import {
-  dayOnePtOne,
-  dayOnePtTwo,
-} from './day-one-util'
+
+import { dayOnePtOne, dayOnePtTwo } from './day-one-util'
+import { dayTwoPartOne, dayTwoPartTwo } from './day-two-utils';
+import { dayThreePartOne, dayThreePartTwo } from './day-three-util';
+
 import FoodIcon from '../assets/groceries.png'
 import RPSIcon from '../assets/rock-paper-scissors.png'
-import { dayTwoData } from '../data/day-two-data';
-import { dayTwoPartOne, dayTwoPartTwo } from './day-two-utils';
 
 export interface DayConfig {
   complete: boolean;
@@ -44,7 +45,13 @@ export const days: DaysConfig = {
     image: RPSIcon,
   },
   3: {
-    complete: false,
+    complete: true,
+    title: "Day Three: ???",
+    data: dayThreeData,
+    partOne: dayThreePartOne,
+    partTwo: dayThreePartTwo,
+    altText: "",
+    image: RPSIcon,
   },
   4: {
     complete: false,

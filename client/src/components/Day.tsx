@@ -19,18 +19,25 @@ export const Day = ({
   altText,
   image,
 }: DayProps) => {
-  const [answerOne, setAnswerOne] = useState<number>();
-  const [answerTwo, setAnswerTwo] = useState<number>();
+  const [answerOne, setAnswerOne] = useState<number>(0);
+  const [answerTwo, setAnswerTwo] = useState<number>(0);
 
   const getAnswerOne = () => {
+    reset()
     const ptOneResult = partOne(data);
     const ptTwoResult = partTwo(data);
     setAnswerOne(ptOneResult);
     setAnswerTwo(ptTwoResult)
   };
 
+  const reset = () => {
+    setAnswerOne(0)
+    setAnswerTwo(0)
+  }
+
   useEffect(() => {
     setDay(day)
+    reset()
   }, [day, setDay])
 
   return (
