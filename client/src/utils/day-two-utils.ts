@@ -75,10 +75,6 @@ export const dayTwoPartTwo = (data: string) => {
     winScore[pair[1]], 
     choiceDictionary[pair[1]][pair[0]]
   ].reduce((a, b) => a + b))
-  console.log({
-    matches,
-    scores
-  })
   // @ts-ignore
   return scores.reduce((a, b) => a + b)
 }

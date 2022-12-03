@@ -10,6 +10,7 @@ import { dayThreePartOne, dayThreePartTwo } from './day-three-util';
 
 import FoodIcon from '../assets/groceries.png'
 import RPSIcon from '../assets/rock-paper-scissors.png'
+import BackpackIcon from '../assets/backpack.png'
 
 export interface DayConfig {
   complete: boolean;
@@ -46,12 +47,12 @@ export const days: DaysConfig = {
   },
   3: {
     complete: true,
-    title: "Day Three: ???",
+    title: "Day Three: Rucksack Reorganization",
     data: dayThreeData,
     partOne: dayThreePartOne,
     partTwo: dayThreePartTwo,
     altText: "",
-    image: RPSIcon,
+    image: BackpackIcon,
   },
   4: {
     complete: false,

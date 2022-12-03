@@ -11,7 +11,6 @@ const caloriesList = (data: string) => {
 }
 
 export const dayOnePtOne = (data: string): number => {
-  console.log(caloriesList(data))
   return caloriesList(data)[0]
 }
 
