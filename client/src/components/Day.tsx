@@ -57,7 +57,8 @@ export const Day = ({
       <a
         className="challenge-link"
         href={`https://adventofcode.com/2022/day/${day}`}
-        target="_blank" rel="noopener noreferrer"
+        target="_blank" 
+        rel="noopener noreferrer"
       >
         Challenge
       </a>
