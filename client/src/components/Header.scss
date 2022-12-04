@@ -1,4 +1,5 @@
 @import '../helpers/style/layout.scss';
+@import '../helpers/style/fonts.scss';
 
 header {
   @include centerH;
@@ -11,6 +12,7 @@ header {
   h1 {
     font-size: 4rem;
     text-transform: uppercase;
+    @include font-two;
   }
 
   nav {

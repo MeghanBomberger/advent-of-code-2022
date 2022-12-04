@@ -22,7 +22,7 @@ export const Day = ({
   const [answerOne, setAnswerOne] = useState<number>(0);
   const [answerTwo, setAnswerTwo] = useState<number>(0);
 
-  const getAnswerOne = () => {
+  const getResults = () => {
     reset()
     const ptOneResult = partOne(data);
     const ptTwoResult = partTwo(data);
@@ -48,11 +48,19 @@ export const Day = ({
         alt={altText}
         src={image}
       />
-      <button onClick={getAnswerOne}>Get Result</button>
+      <button onClick={getResults}>Get Result</button>
       <h3>Part 1</h3>
       <p>{answerOne}</p>
       <h3>Part 2</h3>
       <p>{answerTwo}</p>
+
+      <a
+        className="challenge-link"
+        href={`https://adventofcode.com/2022/day/${day}`}
+        target="_blank" rel="noopener noreferrer"
+      >
+        Challenge
+      </a>
     </main>
   );
 }

@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Zen+Dots&display=swap');
+
+@mixin font-one {
+  font-family: 'Roboto', sans-serif;
+}
+
+@mixin font-two {
+  font-family: 'Zen Dots', cursive;
+}
