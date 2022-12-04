@@ -11,6 +11,9 @@ import { dayThreePartOne, dayThreePartTwo } from './day-three-util';
 import FoodIcon from '../assets/groceries.png'
 import RPSIcon from '../assets/rock-paper-scissors.png'
 import BackpackIcon from '../assets/backpack.png'
+import GridIcon from '../assets/pixels.png'
+import { dayFourData } from '../data/day-four-data';
+import { dayFourPartOne, dayFourPartTwo } from './day-four-util';
 
 export interface DayConfig {
   complete: boolean;
@@ -51,11 +54,17 @@ export const days: DaysConfig = {
     data: dayThreeData,
     partOne: dayThreePartOne,
     partTwo: dayThreePartTwo,
-    altText: "",
+    altText: "Elf packs",
     image: BackpackIcon,
   },
   4: {
-    complete: false,
+    complete: true,
+    title: "Day Four: Camp Cleanup",
+    data: dayFourData,
+    partOne: dayFourPartOne,
+    partTwo: dayFourPartTwo,
+    altText: "Camp clean up sections",
+    image: GridIcon,
   },
   5: {
     complete: false,
