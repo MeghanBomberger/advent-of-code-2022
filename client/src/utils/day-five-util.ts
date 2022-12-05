@@ -58,86 +58,57 @@ export const rotatePiles = (data: string): Piles => {
   return pilesObj
 }
 
-export const arrSteps = (data: string): number[][] => {
-  const steps = getSortInstructions(data)
+interface Step {
+  move: number,
+  from: number,
+  to: number
+}
+interface Steps {
+  [step: number]: Step
+}
+
+export const arrSteps = (data: string): Steps => {
+  const steps: Steps = {}
+  const stepsArr = getSortInstructions(data)
     .split('\n')
     .map(str => (
       str.split(' ')
         .map(subStr => Number(subStr))
         .filter(num => !isNaN(num) && num !== 0)
     ))
+  stepsArr.forEach((step, i) => {
+    steps[i] = {
+      move: step[0],
+      from: step[1] - 1,
+      to: step[2] - 1
+    }
+  })
   return steps
 }
 
-const logIf = (i: number) => true
+export const moveCrates = async (piles: Piles, steps: Steps): Piles => {
+  const newPiles = {...piles}
+  await Object.keys(steps).forEach(key => {
+    const step = steps[Number(key)]
+    console.log(`STEP ${key}`, step)
 
-const moveCrate = (
-  stacks: Piles,
-  fromIndex: number,
-  toIndex: number,
-  i: number,
-  j: number,
-  step: number[]
-) => {
-  const fromPile = stacks[fromIndex]
-  const toPile = stacks[toIndex]
-  const crateToMove = !fromPile?.length 
-    ? null 
-    : fromPile.length === 1 
-      ? fromPile[0] 
-      : fromPile[fromPile.length - 1]
-  // if (!crateToMove && logIf(i)) {
-  //   console.error(i, j, step, fromPile, toPile, crateToMove)
-  // }
-  const newFromPile = !fromPile?.length ? [] : fromPile.slice(0, fromPile.length - 1)
-  const newToPile = !crateToMove 
-    ? toPile
-    : !!toPile?.length && toPile.length > 0 
-      ? [...toPile, crateToMove] 
-      : [crateToMove]
-  if (logIf(i) && (
-    newFromPile.filter(crate => !crate)?.length ||
-    newToPile.filter(crate => !crate)?.length
-  )) {
-    console.error(i, j, step, fromPile, newFromPile, toPile, newToPile)
-  }
-  const newPiles = { ...stacks }
-  newPiles[toIndex] = newToPile
-  newPiles[fromIndex] = fromPile?.length <= 1 ? [] : newFromPile
-  if (logIf(i)) {
-    console.log(stacks)
-    console.log(fromPile)
-    console.log(crateToMove)
-    console.log(newPiles)
-  }
+    let amount = step.move
+    for (let i = 0; i < amount; i++) {
+      if (newPiles[step.from]?.length > 0) {
+        const crateToMove = newPiles[step.from][newPiles[step.from]?.length - 1]
+        console.log(`crateToMove-${i}`, crateToMove)
+        newPiles[step.to].push(crateToMove)
+        console.log("TO", newPiles[step.to])
+        newPiles[step.from].pop()
+        console.log("FROM", newPiles[step.from])
+      }
+    }
+  })
   return newPiles
 }
 
-const moveCrates = (data: string) => {
-  let piles = rotatePiles(data)
-  const steps = arrSteps(data)
-
-  steps.forEach((step, i) => {
-    const fromIndex = step[1] - 1
-    logIf(i) && console.log("FROM INDEX:", fromIndex)
-    const toIndex = step[2] - 1
-    logIf(i) && console.log("TO INDEX:", toIndex)
-    const amountToMove = step[0]
-    logIf(i) && console.log("# OF CRATES: ", amountToMove)
-    for (let j = 0; j <= amountToMove; j++) {
-      logIf(i) && console.log(`STEP: ${i} - MOVE: ${j}`)
-      piles = moveCrate(piles, fromIndex, toIndex, i, j, step)
-    }
-  })
-
-  return piles
-}
-
 export const dayFivePartOne = (data: string): string => {
-  const finalPosition = moveCrates(data)
-  const topCrates = Object.keys(finalPosition).map(key => finalPosition[Number(key)][finalPosition[Number(key)].length - 1]).map(crate => !crate ? ' ' : crate)
-  console.log(topCrates)
-  return topCrates.join("")
+  return ''
 }
 
 export const dayFivePartTwo = (data: string) => {
