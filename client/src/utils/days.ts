@@ -14,13 +14,15 @@ import BackpackIcon from '../assets/backpack.png'
 import GridIcon from '../assets/pixels.png'
 import { dayFourData } from '../data/day-four-data';
 import { dayFourPartOne, dayFourPartTwo } from './day-four-util';
+import { dayFiveData } from '../data/day-five-data';
+import { dayFivePartOne, dayFivePartTwo } from './day-five-util';
 
 export interface DayConfig {
   complete: boolean;
   title: string;
   data: string;
-  partOne: (data: string) => number;
-  partTwo: (data: string) => number;
+  partOne: any;
+  partTwo: any;
   altText: string;
   image: string;
 }
@@ -68,6 +70,12 @@ export const days: DaysConfig = {
   },
   5: {
     complete: false,
+    title: "Day Five: ???",
+    data: dayFiveData,
+    partOne: dayFivePartOne,
+    partTwo: dayFivePartTwo,
+    altText: "Camp clean up sections",
+    image: GridIcon,
   },
   6: {
     complete: false,

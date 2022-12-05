@@ -96,6 +96,7 @@ export const Header = ({
             name
           }) => (
             <a 
+              key={name.split(" ").join("")}
               href={`https://adventofcode.com/2022/leaderboard/private/view/${leaderboardId}`}
               target="_blank"
               rel="noopener noreferrer"

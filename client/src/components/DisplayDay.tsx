@@ -45,12 +45,12 @@ export const DisplayDay = ({
     refreshClock()
   }, [now, startTime])
 
-  useEffect(() => {
-    const timerId = setInterval(refreshClock, 1000);
-    return function cleanup() {
-      clearInterval(timerId);
-    };
-  }, [])
+  // useEffect(() => {
+  //   const timerId = setInterval(refreshClock, 1000);
+  //   return function cleanup() {
+  //     clearInterval(timerId);
+  //   };
+  // }, [])
 
   return !!isLive && !!dayConfig?.title
     ? (
