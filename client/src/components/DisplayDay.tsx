@@ -26,6 +26,7 @@ export const DisplayDay = ({
   const startTime = dayjs(`12-${day}-2022 12:00:00 AM EST`)
   const [now, setNow] = useState<string>(dayjs().format('M-D-YYYY HH:mm:ss A'))
   const [clock, setClock] = useState<string>('0:00:00:00')
+  const [isLive, setIsLive] = useState<boolean>(false)
 
   const refreshClock = useCallback(() => {
     const time = startTime.diff(dayjs(), 's')
@@ -35,6 +36,9 @@ export const DisplayDay = ({
     const days = (time - seconds - (minutes * 60) - (hours * 60 * 60)) / 60 / 60 / 24
     const formattedTime = `${days > 0 ? `${days}:` : ''}${hours < 10 ? 0 : ''}${hours}:${minutes < 10 ? 0 : ''}${minutes}:${seconds < 10 ? 0 : ''}${seconds}`
     setClock(formattedTime)
+    if (time <= 0) {
+      setIsLive(true)
+    }
   }, [now, day])
 
   useEffect(() => {
@@ -48,7 +52,7 @@ export const DisplayDay = ({
     };
   }, [])
 
-  return !!dayConfig?.complete && !!dayConfig?.title
+  return !!isLive && !!dayConfig?.title
     ? (
       <Day
         complete={dayConfig?.complete || false}
